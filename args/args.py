@@ -6,6 +6,6 @@ def parse_args():
 
     parser.add_argument("host", type=str)
     parser.add_argument("--ports", type=str, default="1-1000")
-
+    parser.add_argument("--filter", type=str, default="none", choices=["none","open", "closed"])
     args = parser.parse_args()
     return args
