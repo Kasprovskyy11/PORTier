@@ -2,8 +2,8 @@ from scanner.scanner import scan_ports
 
 results = []
 
-def collect_results(host, port, results, lock, filter, timeout):
-    state = scan_ports(host, port, timeout)
+def collect_results(host, port, results, lock, filter, timeout, version_detection):
+    state = scan_ports(host, port, timeout, version_detection)
     if filter == "open":
         if state[0] == "open":
             with lock:
