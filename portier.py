@@ -23,8 +23,6 @@ for t in threads:
 
 results.sort(key=lambda x: x[0])
 
-for port, state, banner in results:
-    banner_str = f"{banner.strip()}" if banner else ""
-    print(f"{port:<6} | {state:<10} | {banner_str}")
+for port, state in results:
+    print(f"{port:<6} | {state:<8}")
 
-print(f"with timeout {timeout}s")
