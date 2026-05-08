@@ -1,5 +1,6 @@
 import socket
 from service_describe.json_describe import json_describe
+from service_describe.banner_grabbing import banner_grabbing
 
 
 def scan_ports(host, port, timeout, version_detection):
@@ -7,7 +8,9 @@ def scan_ports(host, port, timeout, version_detection):
     try:
         connection = socket.create_connection((host,port), timeout=timeout)
         info.append("open")
-        if not version_detection:
+        if version_detection:
+                info.append(banner_grabbing(connection, port, timeout))
+        else:
             try:
                 info.append(json_describe(port))
             except:
